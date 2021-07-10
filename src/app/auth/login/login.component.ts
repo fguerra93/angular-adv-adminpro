@@ -32,31 +32,25 @@ export class LoginComponent implements OnInit {
     this.renderButton();
   }
 
-  login(){
-    
+  login() {
+
     this.usuarioService.login( this.loginForm.value )
       .subscribe( resp => {
-        
-        
-        
-        if ( this.loginForm.get('remember').value ){
-          localStorage.setItem('email', this.loginForm.get('email').value);
+
+        if ( this.loginForm.get('remember').value ){ 
+          localStorage.setItem('email', this.loginForm.get('email').value );
         } else {
-
           localStorage.removeItem('email');
-
         }
 
-        // Navegar al dashboard
+        // Navegar al Dashboard
         this.router.navigateByUrl('/');
 
       }, (err) => {
-        Swal.fire('Error', err.error.msg, 'error');
+        // Si sucede un error
+        Swal.fire('Error', err.error.msg, 'error' );
       });
-    
-    
-    
-    
+
   }
 
   onSuccess(googleUser) {
@@ -104,7 +98,6 @@ export class LoginComponent implements OnInit {
               .subscribe( resp => {
                 // Navegar al dashboard
                 this.ngZone.run( () => {
-                  
                   this.router.navigateByUrl('/');
                 })
               });
