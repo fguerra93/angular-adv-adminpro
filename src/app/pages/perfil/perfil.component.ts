@@ -17,7 +17,7 @@ export class PerfilComponent implements OnInit {
   public imagenSubir: File;
   public imgTemp: any = null;
 
-  constructor( private fb: FormBuilder, private usuarioService: UsuarioService, private fileUpaloadService: FileUploadService ) {
+  constructor( private fb: FormBuilder, private usuarioService: UsuarioService, private fileUploadService: FileUploadService ) {
 
     this.usuario = usuarioService.usuario;
    }
@@ -62,7 +62,7 @@ export class PerfilComponent implements OnInit {
   }
 
   subirImagen() {
-    this.fileUpaloadService
+    this.fileUploadService
       .actualizarFoto(  this.imagenSubir, 'usuarios', this.usuario.uid )
       .then( img => {
         this.usuario.img = img;
